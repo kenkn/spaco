@@ -12,72 +12,77 @@
 
 /*global $, spa */
 
-spa.chat = (function (){
-  // モジュールスコープ変数
+spa.chat = (function () {
+  //---------------- BEGIN MODULE SCOPE VARIABLES --------------
   var
     configMap = {
-      main_html: String()
+      main_html : String()
         + '<div style="padding:1em; color:#fff;">'
-        + 'Say hello kenkn to chat'
+          + 'Say hello to chat'
         + '</div>',
-        settable_map: {}
+      settable_map : {}
     },
-    stateMap = { $container : null }
+    stateMap  = { $container : null },
     jqueryMap = {},
 
     setJqueryMap, configModule, initModule
     ;
+  //----------------- END MODULE SCOPE VARIABLES ---------------
 
-  // ユーティリティメソッド開始
-  // ユーティリティメソッド終了
+  //------------------- BEGIN UTILITY METHODS ------------------
+  //-------------------- END UTILITY METHODS -------------------
 
-  // DOMメソッド開始
-  setJqueryMap = function (){
+  //--------------------- BEGIN DOM METHODS --------------------
+  // Begin DOM method /setJqueryMap/
+  setJqueryMap = function () {
     var $container = stateMap.$container;
-    jqueryMap = { $container : $container }
+    jqueryMap = { $container : $container };
   };
-  // DOMメソッド終了
+  // End DOM method /setJqueryMap/
+  //---------------------- END DOM METHODS ---------------------
 
-  // イベントハンドラ開始
-  // イベントハンドラ終了
+  //------------------- BEGIN EVENT HANDLERS -------------------
+  //-------------------- END EVENT HANDLERS --------------------
 
-  // パブリックメソッド開始
-  // パブリックメソッド/configModule/
-  // 目的: 許可されたキーの構成の調整
-  // 引数: 構成可能なキーバリューマップ
-  //   * color_name - 使用する色
-  // 設定:
-  //   * configMap.settable_map 許可されたキーを宣言
-  // 戻り値: true
-  // 例外発行: なし
+  //------------------- BEGIN PUBLIC METHODS -------------------
+  // Begin public method /configModule/
+  // Purpose    : Adjust configuration of allowed keys
+  // Arguments  : A map of settable keys and values
+  //   * color_name - color to use
+  // Settings   :
+  //   * configMap.settable_map declares allowed keys
+  // Returns    : true
+  // Throws     : none
   //
-  configModule = function (){
+  configModule = function ( input_map ) {
     spa.util.setConfigMap({
-      input_map: input_map,
-      settable_map: configMap.settable_map,
-      config_map: configMap
+      input_map    : input_map,
+      settable_map : configMap.settable_map,
+      config_map   : configMap
     });
     return true;
   };
+  // End public method /configModule/
 
-  // パブリックメソッド/initModule/
-  // 目的: モジュールの初期化
-  // 引数:
-  //   * $container この機能が使うjQuery要素
-  // 戻り値: true
-  // 例外発行: なし
+  // Begin public method /initModule/
+  // Purpose    : Initializes module
+  // Arguments  :
+  //  * $container the jquery element used by this feature
+  // Returns    : true
+  // Throws     : none
   //
-  initModule = function ( $container ){
+  initModule = function ( $container ) {
     $container.html( configMap.main_html );
     stateMap.$container = $container;
     setJqueryMap();
     return true;
   };
+  // End public method /initModule/
 
-  // パブリックメソッドを戻す
+  // return public methods
   return {
-    configModule: configModule,
-    initModule: initModule
+    configModule : configModule,
+    initModule   : initModule
   };
-  // パブリックメソッド終了
+  //------------------- END PUBLIC METHODS ---------------------
 }());
