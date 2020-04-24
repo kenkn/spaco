@@ -11,18 +11,20 @@
 /*global $, spa */
 
 spa.util = (function () {
+  console.log("util");
   var makeError, setConfigMap;
 
-  // Begin Public constructor /makeError/
-  // Purpose: a convenience wrapper to create an error object
-  // Arguments:
-  //   * name_text - the error name
-  //   * msg_text  - long error message
-  //   * data      - optional data attached to error object
-  // Returns  : newly constructed error object
-  // Throws   : none
+  // パブリックコンストラクタ /makeError/ 開始
+  // 目的: エラーオブジェクトを作成する便利なラッパー
+  // 引数:
+  //   * name_text - エラー名
+  //   * msg_text  - 長いエラーメッセージ
+  //   * data      - エラーオブジェクトに付加するオプションのデータ
+  // 戻り値  : 新たに作成されたエラーオブジェクト
+  // 例外発行: none
   //
   makeError = function ( name_text, msg_text, data ) {
+    console.log("makeerror util");
     var error     = new Error();
     error.name    = name_text;
     error.message = msg_text;
@@ -31,18 +33,19 @@ spa.util = (function () {
 
     return error;
   };
-  // End Public constructor /makeError/
+  // パブリックコンストラクタ /makeError/ 終了
 
-  // Begin Public method /setConfigMap/
-  // Purpose: Common code to set configs in feature modules
-  // Arguments:
-  //   * input_map    - map of key-values to set in config
-  //   * settable_map - map of allowable keys to set
-  //   * config_map   - map to apply settings to
-  // Returns: true
-  // Throws : Exception if input key not allowed
+  // パブリックメソッド /setConfigMap/ 開始
+  // 目的: 機能モジュールで構成を行うための共通コード
+  // 引数:
+  //   * input_map    - 構成するキーバリューマップ
+  //   * settable_map - 構成できるキーのマップ
+  //   * config_map   - 構成を適用するマップ
+  // 戻り値: true
+  // 例外発行 : 入力キーが許可されてない場合例外発行
   //
   setConfigMap = function ( arg_map ){
+    console.log("setconfigmap util");
     var
       input_map    = arg_map.input_map,
       settable_map = arg_map.settable_map,
@@ -63,7 +66,7 @@ spa.util = (function () {
       }
     }
   };
-  // End Public method /setConfigMap/
+  // パブリックメソッド /setConfigMap/ 終了
 
   return {
     makeError    : makeError,

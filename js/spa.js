@@ -12,7 +12,10 @@
 /*global $, spa */
 
 var spa = (function () {
+  console.log("spa");
+
   var initModule = function ( $container ) {
+    console.log("initmodule spa");
     spa.shell.initModule( $container );
   };
 
